@@ -1,0 +1,115 @@
+<div class="container">
+  <h1>Meeting Room Reservation</h1>
+  <hr>
+  <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+    <div class="form-group text-center text-danger m-4">
+      <label for="salle" class="m-1 text-danger">Room meeting</label>
+      <select id="salle" name="salle" ngModel required>
+        <option value="">Select your room</option>
+        <option value="salle1">Salle 1</option>
+        <option value="salle2">Salle 2</option>
+        <option value="salle3">Salle 3</option>
+      </select>
+      <small *ngIf="taskForm.controls['salle'].invalid && taskForm.controls['salle'].touched" class="form-text text-danger m-4">Please select a room.</small>
+    </div>
+
+    <div class="row m-1">
+      <div class="col-md-6 mb-4 form-group">
+        <label class="form-label" for="firstName">First name</label>
+        <input type="text" id="firstName" class="form-control" placeholder="Enter first name" ngModel name="firstName" required>
+        <small *ngIf="taskForm.controls['firstName'].invalid && taskForm.controls['firstName'].touched" class="form-text text-danger">Required field</small>
+      </div>
+      <div class="col-md-6 mb-4 form-group">
+        <label class="form-label" for="lastName">Last name</label>
+        <input type="text" id="lastName" class="form-control" placeholder="Enter last name" ngModel name="lastName" required>
+        <small *ngIf="taskForm.controls['lastName'].invalid && taskForm.controls['lastName'].touched" class="form-text text-danger">Required field</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="m-1">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" ngModel name="email" required>
+      <small *ngIf="taskForm.controls['email'].invalid && taskForm.controls['email'].touched" class="form-text text-danger">Required field</small>
+    </div>
+
+    <div class="form-group">
+      <label for="date" class="m-1">Date</label>
+      <input type="date" class="form-control" id="date" placeholder="Enter date" ngModel name="date" required>
+      <small *ngIf="taskForm.controls['date'].invalid && taskForm.controls['date'].touched" class="form-text text-danger">Required field</small>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime" class="m-1">Start Time</label>
+      <input type="time" class="form-control" id="startTime" placeholder="Enter start time" ngModel name="startTime" required>
+      <small *ngIf="taskForm.controls['startTime'].invalid && taskForm.controls['startTime'].touched" class="form-text text-danger">Required field</small>
+    </div>
+
+    <div class="form-group">
+      <label for="endTime" class="m-1">End Time</label>
+      <input type="time" class="form-control" id="endTime" placeholder="Enter end time" ngModel name="endTime" required>
+      <small *ngIf="taskForm.controls['endTime'].invalid && taskForm.controls['endTime'].touched" class="form-text text-danger">Required field</small>
+    </div>
+
+    <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">{{ editMode ? 'Update' : 'Submit' }}</button>
+    <div class="d-flex justify-content-end align-items-start">
+      <button *ngIf="editMode" (click)="onCancelEdit(taskForm)" type="button" class="btn btn-secondary">Cancel</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Salle</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of taskArray; index as i">
+        <td>{{ t.firstName }}</td>
+        <td>{{ t.lastName }}</td>
+        <td>{{ t.email }}</td>
+        <td>{{ t.date }}</td>
+        <td>{{ t.startTime }}</td>
+        <td>{{ t.endTime }}</td>
+        <td>{{ t.salle }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm m-1" (click)="onEdit(i, taskForm)">Edit</button>
+          <button class="btn btn-danger btn-sm m-1" (click)="onDelete(i)">Delete</button>
+          <button class="btn btn-info btn-sm m-1" (click)="onViewDetails(i)">View Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal for viewing details -->
+  <div class="modal" tabindex="-1" [ngClass]="{ 'show': selectedTask }" style="display: block;" *ngIf="selectedTask">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title m-4">reservation successfully</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="onCloseDetails()"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p><strong>First Name:</strong> {{ selectedTask?.firstName }}</p>
+          <p><strong>Last Name:</strong> {{ selectedTask?.lastName }}</p>
+          <p><strong>Email:</strong> {{ selectedTask?.email }}</p>
+          <p><strong>Date:</strong> {{ selectedTask?.date }}</p>
+          <p><strong>Start Time:</strong> {{ selectedTask?.startTime }}</p>
+          <p><strong>End Time:</strong> {{ selectedTask?.endTime }}</p>
+          <p><strong>Salle:</strong> {{ selectedTask?.salle }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="onCloseDetails()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

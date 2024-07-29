@@ -1,0 +1,157 @@
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#submitButton {
+    margin-top: 20px;
+}
+
+#myCheckbox {
+    margin-left: 30px;
+}
+/* General Styles */
+.container {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  hr {
+    margin: 2rem 0;
+  }
+  
+  /* Form Styles */
+  form {
+    padding: 1rem;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input:focus, select:focus {
+    border-color:#ddd;
+    
+  }
+  
+  small {
+    color: #dc3545;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  
+  /* Button Styles */
+  button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+  
+  #submitButton {
+    margin-right: 1rem;
+  }
+  
+  .btn-secondary {
+    margin-left: 0.5rem;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+  }
+  
+  thead {
+    background:blanchedalmond;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  
+  tbody tr:nth-child(even) {
+    background:#ccc;
+  }
+  
+  tbody tr:hover {
+    background:#ddd; /* kif nenzel al tableau ytbdel coleor*/
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .actions button {
+    padding:0cap;
+  }
+  
+  
+ 
+  
+  .modal-dialog {
+    background:#ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .modal-header, .modal-footer {
+    padding:0cqmax;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-title {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+  }
+  .modal-title {
+    text-align: center;
+    color: green;
+    font-size: 1.25rem;
+  }
+  
